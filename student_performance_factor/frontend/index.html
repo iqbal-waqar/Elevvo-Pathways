@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Predictor</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="main-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1><i class="fas fa-graduation-cap"></i> Student Performance Predictor</h1>
+                <p>Predict academic success based on study habits and other factors</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-calculator"></i> Score Prediction</h2>
+                </div>
+                <div class="card-body">
+                    <form id="prediction-form">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Student Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter student name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="study_hours"><i class="fas fa-clock"></i> Study Hours (per week)</label>
+                            <input type="number" id="study_hours" name="study_hours" step="0.1" min="0" placeholder="e.g. 15.5" required>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-chart-line"></i> Predict Score
+                        </button>
+                    </form>
+                    <div id="result" class="result-container"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-chart-bar"></i> Data Visualization</h2>
+                </div>
+                <div class="card-body">
+                    <div class="graph-controls">
+                        <div class="form-group">
+                            <label for="xAxis"><i class="fas fa-arrows-alt-h"></i> X-Axis</label>
+                            <select id="xAxis" class="graph-select">
+                                <option value="Hours_Studied">Hours Studied</option>
+                                <option value="Attendance">Attendance</option>
+                                <option value="Sleep_Hours">Sleep Hours</option>
+                                <option value="Previous_Scores">Previous Scores</option>
+                                <option value="Tutoring_Sessions">Tutoring Sessions</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="yAxis"><i class="fas fa-arrows-alt-v"></i> Y-Axis</label>
+                            <select id="yAxis" class="graph-select">
+                                <option value="Exam_Score">Exam Score</option>
+                                <option value="Hours_Studied">Hours Studied</option>
+                                <option value="Attendance">Attendance</option>
+                                <option value="Sleep_Hours">Sleep Hours</option>
+                                <option value="Previous_Scores">Previous Scores</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="chartType"><i class="fas fa-chart-pie"></i> Chart Type</label>
+                            <select id="chartType" class="graph-select">
+                                <option value="scatter">Scatter Plot</option>
+                                <option value="bar">Bar Chart</option>
+                                <option value="line">Line Chart</option>
+                            </select>
+                        </div>
+                        <button id="updateChart" class="btn-submit">
+                            <i class="fas fa-sync-alt"></i> Update Chart
+                        </button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="scoreChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-chart-line"></i> Model Performance</h2>
+            </div>
+            <div class="card-body">
+                <div class="model-controls">
+                    <div class="form-group">
+                        <label for="modelType"><i class="fas fa-brain"></i> Regression Model</label>
+                        <select id="modelType" class="graph-select">
+                            <option value="linear">Linear Regression</option>
+                            <option value="polynomial">Polynomial Regression</option>
+                        </select>
+                    </div>
+                    <button id="showPerformance" class="btn-submit">
+                        <i class="fas fa-chart-bar"></i> Show Performance
+                    </button>
+                </div>
+                <div id="modelPerformance" class="performance-container"></div>
+                <div class="regression-info">
+                    <h3>Model Information</h3>
+                    <div id="modelInfo" class="info-content">
+                        <p><strong>Linear Regression:</strong> Models the relationship between study hours and exam scores as a straight line.</p>
+                        <p><strong>Polynomial Regression:</strong> Models the relationship as a curved line, allowing for more complex patterns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p>© 2025 Student Performance Predictor | Machine Learning Powered</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/script/script.js"></script>
+</body>
+</html>
